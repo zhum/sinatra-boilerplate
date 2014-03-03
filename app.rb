@@ -3,12 +3,14 @@ require "sinatra/reloader" if development?
 require "sinatra/json"
 require "sinatra/cookies"
 require "sinatra/flash"
-require './controller'
-require './model'
-require './assets'
-require './helpers'
+require "sinatra/assetpack"
+require "data_mapper"
+require "dm-migrations"
+require "dm-sqlite-adapter"
 require "rack"
 require "rack/cors"
+
+# Configuration
 
 configure do
 	enable :sessions
@@ -16,6 +18,64 @@ configure do
 	set :erb, :layout => :layout
 
 end
+
+# Asset Management
+
+register Sinatra::AssetPack
+
+assets do
+  js :main, [
+    "http://code.jquery.com/jquery.min.js",
+    "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js",
+    "/js/*.js",
+    "/js/*/*.js",
+    "/js/*/*/*.js"
+    
+  ]
+  css :main, [
+    "http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css",
+    "/css/*.css",
+    "/css/*/*.css",
+    "/css/*/*/*.css",
+  ]
+end
+
+
+
+
+
+
+
+# Controller
+
+
+get "/" do
+  # flash[:info] = 'This is a flash message'
+  erb :index
+end
+
+
+
+
+
+
+
+
+
+# Helpers
+
+helpers do
+  
+  def boldify(text)
+    return "<strong>#{text}</strong>"
+  end
+
+end
+
+
+
+
+# CORS Config
 
 use Rack::Cors do |config|
   config.allow do |allow|
@@ -39,3 +99,24 @@ options "*" do
   # Needed for AngularJS
   response.headers["Access-Control-Allow-Headers"] = "X-Requested-With, X-HTTP-Method-Override, Content-Type, Cache-Control, Accept"
 end
+
+
+
+
+
+
+# Database Config
+
+DataMapper.setup(:default, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/development.sqlite3")
+
+class User
+  include DataMapper::Resource
+
+  property :id, Serial
+  # ...
+
+
+
+end
+
+DataMapper.finalize.auto_upgrade!

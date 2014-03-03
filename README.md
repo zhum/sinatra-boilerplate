@@ -1,4 +1,5 @@
 # Sinatra Boilerplate
+## Single File Format Version
 
 I have been using Sinatra for a while, and have loved every moment of it. It's so simple create any type of application, from REST APIs to database applications. It's only problem is that it doesn't have a scaffolding tool, neither a command line tool. I found it quite frustrating at times, when I had to make quick apps, with it. So I tried to fix it.
 <br><br>
