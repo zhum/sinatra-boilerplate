@@ -2,6 +2,7 @@ require "sinatra"
 require "sinatra/reloader" if development?
 require "sinatra/json"
 require "sinatra/cookies"
+require "sinatra/flash"
 require './controller'
 require './model'
 require './assets'
