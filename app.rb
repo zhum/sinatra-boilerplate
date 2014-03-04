@@ -1,3 +1,5 @@
+require "rubygems"
+require "bundler"
 require "sinatra"
 require "sinatra/reloader" if development?
 require "sinatra/json"
@@ -8,7 +10,7 @@ require "data_mapper"
 require "dm-migrations"
 require "dm-sqlite-adapter"
 require "rack"
-require "rack/cors"
+Bundler.require(:default)
 
 # Configuration
 
