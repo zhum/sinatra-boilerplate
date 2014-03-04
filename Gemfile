@@ -9,4 +9,6 @@ gem "datamapper"
 gem "dm-migrations"
 gem "dm-sqlite-adapter"
 gem "rack"
+gem "coffee-script"
+gem "sass"
 # ...

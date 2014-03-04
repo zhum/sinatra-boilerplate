@@ -1,5 +1,7 @@
 # Sinatra Boilerplate
 
+**This version of the boilerplate includes CoffeeScript and SCSS**
+
 I have been using Sinatra for a while, and have loved every moment of it. It's so simple create any type of application, from REST APIs to database applications. It's only problem is that it doesn't have a scaffolding tool, neither a command line tool. I found it quite frustrating at times, when I had to make quick apps, with it. So I tried to fix it.
 <br><br>
 Instead of creating a whole rubygem just for my small problem, I created a boilerplate for Sinatra, so all I had to do was copy or git clone the code, and I'd been on my way. I created it a while back, and a lot of people have been asking me about how my Sinatra apps are so well structured, and so I thought I'd open-source the code, just like I did for my [static boilerplate project](https://github.com/karlcoelho/coelho-boilerplate).
