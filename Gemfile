@@ -9,5 +9,4 @@ gem "datamapper"
 gem "dm-migrations"
 gem "dm-sqlite-adapter"
 gem "rack"
-gem "rack-cors"
 # ...
