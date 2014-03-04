@@ -1,6 +1,7 @@
 require "data_mapper"
 require "dm-migrations"
 require "dm-sqlite-adapter"
+require "dm-postgres-adapter"
 
 DataMapper.setup(:default, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/development.sqlite3")
 
