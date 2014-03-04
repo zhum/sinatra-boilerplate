@@ -1,13 +1,16 @@
+require "rubygems"
+require "bundler"
 require "sinatra"
 require "sinatra/reloader" if development?
+require "bundler"
 require "sinatra/json"
 require "sinatra/cookies"
 require "sinatra/flash"
-require './controller'
-require './model'
-require './assets'
-require './helpers'
-require "rack"
+require "./controller"
+require "./model"
+require "./assets"
+require "./helpers"
+Bundler.require(:default)
 
 configure do
 	enable :sessions
