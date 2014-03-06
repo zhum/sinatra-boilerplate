@@ -5,15 +5,13 @@ gem "sinatra-contrib"
 gem "sinatra-assetpack"
 gem "sinatra-static-assets"
 gem "sinatra-flash"
-gem "datamapper"
-gem "dm-migrations"
 gem "rack"
+gem "sequel"
 
 group :development do 
-	gem "dm-sqlite-adapter"
+	gem "sqlite3"
 end
 
 group :production do
-	gem "dm-postgres-adapter"
 	gem "pg"
 end

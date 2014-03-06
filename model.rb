@@ -1,18 +1,18 @@
-require "data_mapper"
-require "dm-migrations"
-require "dm-sqlite-adapter"
-require "dm-postgres-adapter"
-
-DataMapper.setup(:default, ENV["DATABASE_URL"] || "sqlite3://#{Dir.pwd}/development.sqlite3")
-
-class User
-	include DataMapper::Resource
-
-	property :id, Serial
-	# ...
-
-
-
+require 'sequel'
+if development?
+	require 'sqlite3'
+end
+if production?
+	require 'pg'
 end
 
-DataMapper.finalize.auto_upgrade!
+DB = Sequel.connect(ENV['DATABASE_URL']) || Sequel.sqlite('./development.sqlite3')
+
+# DB.create_table :messages do
+# 	primary_key :id
+# 	text :message
+# 	text :name
+# end
+
+class Message < Sequel::Model
+end
