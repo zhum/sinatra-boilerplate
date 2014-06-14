@@ -9,6 +9,10 @@ gem "datamapper"
 gem "dm-migrations"
 gem "rack"
 
+group :test do
+	gem 'rake'
+end
+
 group :development do 
 	gem "dm-sqlite-adapter"
 end
