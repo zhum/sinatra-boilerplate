@@ -1,6 +1,6 @@
 helpers do
 	
-	def boldify(text)
+	def bold(text)
 		return "<strong>#{text}</strong>"
 	end
 
