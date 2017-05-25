@@ -1,22 +1,18 @@
 require 'rubygems'
 require 'bundler'
-require 'sinatra'
+Bundler.require(:default)
+
 require 'sinatra/reloader' if development?
-require 'bundler'
-require 'sinatra/json'
-require 'sinatra/cookies'
-require 'sinatra/flash'
 require './controller'
 require './model'
 require './assets'
 require './helpers'
-Bundler.require(:default)
 
 configure do
-	enable :sessions
-	set :json_encoder, :to_json
-	set :erb, :layout => :layout
-
+  enable :sessions
+  set :json_encoder, :to_json
+  #set :erb, :layout => :layout
+  #set :slim, layout => :layout
 end
 
 before do

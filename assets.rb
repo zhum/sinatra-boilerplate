@@ -1,21 +1,25 @@
-require 'sinatra/assetpack'
+set :assets, Sprockets::Environment.new
 
-register Sinatra::AssetPack
+# Configure sprockets
+settings.assets.append_path "assets/js"
+settings.assets.append_path "assets/css"
 
-assets do
-  js :main, [
-    'http://code.jquery.com/jquery.min.js',
-    'http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js',
-    'http://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js',
-    '/js/*.js',
-    '/js/*/*.js',
-    '/js/*/*/*.js'
-    
-  ]
-  css :main, [
-    'http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css',
-		'/css/*.css',
-		'/css/*/*.css',
-		'/css/*/*/*.css',
-  ]
+# For compressed JS and CSS output
+
+settings.assets.js_compressor  = :uglify
+settings.assets.css_compressor = :scss
+
+# Alternate version (not tested)
+#require "yui/compressor"
+#settings.assets.js_compressor  = YUI::JavaScriptCompressor.new
+#settings.assets.css_compressor = YUI::CssCompressor.new
+
+get "/js/:file.js" do
+  content_type "application/javascript"
+  settings.assets["#{params[:file]}.js"]
+end
+
+get "/css/:file.css" do
+  content_type "text/css"
+  settings.assets["#{params[:file]}.css"]
 end

@@ -1,3 +1,11 @@
+# Notes
+This is a modified version. It works with Sinatra 2, Sprockets 3.
+
+- no helpers for assets, just use /css/FILE.css and /js/FILE.js
+- no bootstrap, jquery and modernizr support, add manually via sprockets
+- no assetpack (couse no support for sinatra2 yet)
+
+
 # Sinatra Boilerplate [![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)](/)
 
 I have been using Sinatra for a while, and have loved every moment of it. It's so simple create any type of application, from REST APIs to database applications. It's only problem is that it doesn't have a scaffolding tool, neither a command line tool. I found it quite frustrating at times, when I had to make quick apps, with it. So I tried to fix it.
